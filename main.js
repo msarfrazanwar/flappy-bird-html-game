@@ -1,3 +1,10 @@
+/*
+Works only with a local server as it uses phsaser. -Commands to run
+
+- npm install http-server -g
+- http-server
+-play directly on the local host
+*/
 // main state contianing the game
 var mainState = {
   preload: function() {
@@ -14,8 +21,10 @@ var mainState = {
     //after perload
     //setup the game
     //change background to blue
-    game.stage.backgroundColor = '#71c5cf';
-
+    // game.stage.backgroundColor = '#FFFFFF'; // white
+    // game.stage.backgroundColor = '#FF0000'; // red
+    game.stage.backgroundColor = '#00CCFF'; // blue
+    
     //set the physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -75,17 +84,17 @@ var mainState = {
     // Set the alive property of the bird to false
     this.bird.alive = false;
 
-    // Prevent new pipes from appearing
+    // Prevents new pipes from appearing
     game.time.events.remove(this.timer);
 
-    // Go through all the pipes, and stop their movement
+    // Go through all the pipes, and stop their movements
     this.pipes.forEach(function(p){
         p.body.velocity.x = 0;
     }, this);
   },
 
 
-  // Make the bird jump
+  // Makes the bird jump
   jump: function() {
     if(this.bird.alive == false)
       return;
